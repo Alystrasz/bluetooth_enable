@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
-
-import '../../lib/bluetooth_enable_fork.dart';
+import 'package:bluetooth_enable_fork/bluetooth_enable_fork.dart';
 
 void main() => runApp(MyApp());
 
