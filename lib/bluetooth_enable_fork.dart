@@ -19,9 +19,14 @@ class BluetoothEnable {
   ///     and needs to be called a second time (after user supposedly activated
   ///     Bluetooth).
   static Future<String> get enableBluetooth async {
-    final String bluetoothState =
-        await _channel.invokeMethod('enableBluetooth');
-    return bluetoothState;
+   try {
+      final String bluetoothState =
+      await _channel.invokeMethod('enableBluetooth');
+      return bluetoothState;
+    } catch (e) {
+      print(e);
+    }
+    return '';
   }
 
   /// This method activates Bluetooth just like enableBluetooth, but allows you
