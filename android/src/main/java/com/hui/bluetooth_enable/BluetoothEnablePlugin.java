@@ -70,11 +70,16 @@ public class BluetoothEnablePlugin implements FlutterPlugin, ActivityAware, Meth
 
         switch (call.method) {
             case "enableBluetooth":
-            {  
-                Intent enableBtIntent = new Intent(BluetoothAdapter.ACTION_REQUEST_ENABLE);
-                activity.startActivityForResult(enableBtIntent, REQUEST_ENABLE_BLUETOOTH);
-                Log.d(TAG, "rdddesult: " + result);
+            {
                 pendingResult = result;
+                BluetoothAdapter mBluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
+                if (mBluetoothAdapter != null && mBluetoothAdapter.isEnabled()) {
+                    pendingResult.success("true");
+                }else {
+                    Intent enableBtIntent = new Intent(BluetoothAdapter.ACTION_REQUEST_ENABLE);
+                    activity.startActivityForResult(enableBtIntent, REQUEST_ENABLE_BLUETOOTH);
+                    Log.d(TAG, "rdddesult: " + result);
+                }
                 break;
             }
             case "customEnable":
