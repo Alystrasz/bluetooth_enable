@@ -1,15 +1,14 @@
-group 'com.hui.bluetooth_enable'
-version '1.0'
+group = "com.example.bluetooth_enable"
+version = "1.0"
 
 buildscript {
     repositories {
         google()
         mavenCentral()
-        mavenLocal()
     }
 
     dependencies {
-        classpath 'com.android.tools.build:gradle:4.1.3'
+        classpath("com.android.tools.build:gradle:8.1.0")
     }
 }
 
@@ -17,28 +16,37 @@ rootProject.allprojects {
     repositories {
         google()
         mavenCentral()
-        mavenLocal()
     }
 }
 
-apply plugin: 'com.android.library'
+apply plugin: "com.android.library"
 
 android {
-    compileSdkVersion 33
+    namespace = "com.example.bluetooth_enable"
+
+    compileSdk = 35
+
+    compileOptions {
+        sourceCompatibility = JavaVersion.VERSION_11
+        targetCompatibility = JavaVersion.VERSION_11
+    }
 
     defaultConfig {
-        minSdkVersion 18
-        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        minSdk = 21
     }
-    lintOptions {
-        disable 'InvalidPackage'
-    }
-    compileOptions {
-        sourceCompatibility JavaVersion.VERSION_1_7
-        targetCompatibility JavaVersion.VERSION_1_7
-    }
-}
 
-dependencies {
-    implementation 'androidx.core:core:1.8.0'
+    dependencies {
+        testImplementation("junit:junit:4.13.2")
+        testImplementation("org.mockito:mockito-core:5.0.0")
+    }
+
+    testOptions {
+        unitTests.all {
+            testLogging {
+               events "passed", "skipped", "failed", "standardOut", "standardError"
+               outputs.upToDateWhen {false}
+               showStandardStreams = true
+            }
+        }
+    }
 }

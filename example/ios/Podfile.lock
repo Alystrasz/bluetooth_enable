@@ -1,22 +1,28 @@
 PODS:
-  - bluetooth_enable_fork (0.1.4):
+  - bluetooth_enable (0.0.1):
     - Flutter
   - Flutter (1.0.0)
+  - integration_test (0.0.1):
+    - Flutter
 
 DEPENDENCIES:
-  - bluetooth_enable_fork (from `.symlinks/plugins/bluetooth_enable_fork/ios`)
+  - bluetooth_enable (from `.symlinks/plugins/bluetooth_enable/ios`)
   - Flutter (from `Flutter`)
+  - integration_test (from `.symlinks/plugins/integration_test/ios`)
 
 EXTERNAL SOURCES:
-  bluetooth_enable_fork:
-    :path: ".symlinks/plugins/bluetooth_enable_fork/ios"
+  bluetooth_enable:
+    :path: ".symlinks/plugins/bluetooth_enable/ios"
   Flutter:
     :path: Flutter
+  integration_test:
+    :path: ".symlinks/plugins/integration_test/ios"
 
 SPEC CHECKSUMS:
-  bluetooth_enable_fork: 73b8ca6e67230a9baa04010cd5c1e824e00d2797
-  Flutter: 50d75fe2f02b26cc09d224853bb45737f8b3214a
+  bluetooth_enable: ffe80dde013bc4a9deb722d1335f103ea0123669
+  Flutter: e0871f40cf51350855a761d2e70bf5af5b9b5de7
+  integration_test: 252f60fa39af5e17c3aa9899d35d908a0721b573
 
-PODFILE CHECKSUM: 7368163408c647b7eb699d0d788ba6718e18fb8d
+PODFILE CHECKSUM: 819463e6a0290f5a72f145ba7cde16e8b6ef0796
 
-COCOAPODS: 1.11.2
+COCOAPODS: 1.15.2

@@ -1,23 +1,29 @@
-import 'package:flutter/services.dart';
 import 'package:flutter_test/flutter_test.dart';
-import 'package:bluetooth_enable_fork/bluetooth_enable_fork.dart';
+import 'package:bluetooth_enable/bluetooth_enable.dart';
+import 'package:bluetooth_enable/bluetooth_enable_platform_interface.dart';
+import 'package:bluetooth_enable/bluetooth_enable_method_channel.dart';
+import 'package:plugin_platform_interface/plugin_platform_interface.dart';
+
+class MockBluetoothEnablePlatform
+    with MockPlatformInterfaceMixin
+    implements BluetoothEnablePlatform {
+
+  @override
+  Future<String?> getPlatformVersion() => Future.value('42');
+}
 
 void main() {
-  const MethodChannel channel = MethodChannel('bluetooth_enable');
+  final BluetoothEnablePlatform initialPlatform = BluetoothEnablePlatform.instance;
 
-  TestWidgetsFlutterBinding.ensureInitialized();
-
-  setUp(() {
-    channel.setMockMethodCallHandler((MethodCall methodCall) async {
-      return 'true';
-    });
+  test('$MethodChannelBluetoothEnable is the default instance', () {
+    expect(initialPlatform, isInstanceOf<MethodChannelBluetoothEnable>());
   });
 
-  tearDown(() {
-    channel.setMockMethodCallHandler(null);
-  });
+  test('getPlatformVersion', () async {
+    BluetoothEnable bluetoothEnablePlugin = BluetoothEnable();
+    MockBluetoothEnablePlatform fakePlatform = MockBluetoothEnablePlatform();
+    BluetoothEnablePlatform.instance = fakePlatform;
 
-  test('getEnableBluetoothResult', () async {
-    expect(await BluetoothEnable.enableBluetooth, 'true');
+    expect(await bluetoothEnablePlugin.getPlatformVersion(), '42');
   });
 }

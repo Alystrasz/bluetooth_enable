@@ -1,4 +1,4 @@
-package com.hui.bluetooth_enable;
+package com.example.bluetooth_enable;
 
 import android.app.Activity;
 import android.Manifest;
