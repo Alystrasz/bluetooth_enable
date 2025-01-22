@@ -24,6 +24,7 @@ rootProject.allprojects {
 apply plugin: 'com.android.library'
 
 android {
+    namespace 'com.hui.bluetooth_enable'
     compileSdkVersion 33
 
     defaultConfig {
