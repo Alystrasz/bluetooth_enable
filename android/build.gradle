@@ -25,7 +25,7 @@ apply plugin: 'com.android.library'
 
 android {
     namespace 'com.hui.bluetooth_enable'
-    compileSdkVersion 35
+    compileSdkVersion 34
 
     defaultConfig {
         minSdkVersion 18
